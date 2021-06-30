@@ -1,8 +1,9 @@
 
 // use ID to get value
 const btn = $('#btnSubmit');
+const $h2ID = $('#h2');
 const $textInput = $('#textInput');
-const $textHeader2=$('<h2></h2>');
+const $textHeader2=$('<h2 id="h2"></h2>');
 const $textDiv = $('<div></div>');
 
 //const body
@@ -10,18 +11,17 @@ const $body = $('#bodyID')
 
 
 $(document).ready(function() {
-});
+
 
 btn.click(function(){  //fire button click event function
-    
+    event.preventDefault();
     const textValueFromJQuery = $(textInput).val(); // calls jquery value
     
     if ( textValueFromJQuery !== ""){  //check if NOT blank
         
         console.log(textValueFromJQuery); //console logs value
         
-        alert(textValueFromJQuery);  //disabled alert to eval h2 append
-        
+       // alert(textValueFromJQuery);  //disabled alert to eval h2 append
         
         
         //append div to body
@@ -51,10 +51,6 @@ btn.click(function(){  //fire button click event function
                 
                 
                 
-                
-                
-                
-                
             }
             
             
@@ -66,8 +62,41 @@ btn.click(function(){  //fire button click event function
             }, 3000)
           })(100);  //  pass the number of iterations as an argument
 
+          
+          //append div to body ///REDUNDANT CODE
+          $($textHeader2).append($textInput);
+          $($textDiv).append($textHeader2); /// this is correct?
+          $($body).append($textDiv);
+          
+          /// Q: why does the h2 not stay appended to the div? (page reloads after hitting okay)
+          
 });
 
+
+// mouse over h2 elem >>> sign new bg color and border radius
+
+
+$($h2ID).hover( 
+    function() {
+        $($h2ID).addClass('bg-primary');
+        $($h2ID).addClass('rounded-pill');
+
+    },
+    function() {
+        $($h2ID).removeClass('bg-light');
+        $($h2ID).removeClass('rounded-pill');
+    
+    
+    })
+
+    
+
+
+
+});
+
+
+///END
 
 
 
